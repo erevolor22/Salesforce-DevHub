@@ -1,0 +1,60 @@
+<template>
+    <!--Header begin-->
+    <article class="slds-card slds-card_boundary">
+      <div class="slds-page-header">
+        <div class="slds-media">
+          <!--Header Expectation Icon-->
+          <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-entity_milestone" title="entity_milestone">
+              <lightning-icon icon-name="standard:entity_milestone" size="small" alternative-text="Expectations Icon">
+              </lightning-icon>
+              <span class="slds-assistive-text">Expectations</span>
+            </span>
+          </div>
+          <!--Header Expecation Label-->
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span class="slds-page-header__title slds-truncate" title="Expectations">Expectations</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+          <div class="slds-builder-toolbar__actions">
+            <!-- Header Last Updated Time-->
+            <span class="slds-page-header__col-meta">
+              <p class="slds-page-header__meta-text" style="text-align: right">Last updated:&nbsp;
+                <lightning-relative-date-time value={lastUpdateTime}></lightning-relative-date-time>
+              </p>
+            </span>
+            <!--Header Refresh Button-->
+            <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-m-left_small"
+              onclick={handleRefresh}>
+              <lightning-icon icon-name="utility:refresh" size="xx-small" alternative-text="Refresh"></lightning-icon>
+              <span class="slds-assistive-text">Refresh Expectation Records</span>
+            </button>
+          </div>
+  
+        </div>
+        <div class="slds-no-flex">
+        </div>
+      </div>
+      <!--Header end-->
+      <!--Spinner for loading-->
+      <div class="spinner">
+        <template if:true={isLoading}>
+          <lightning-spinner alternative-text="Loading" variant="brand" size="medium">
+          </lightning-spinner>
+        </template>
+      </div>
+      <!--Lightning datatable-->
+      <template if:true={expRecordList}>
+        <!--Custom data type for relative datetime. See vantageTypes LWC-->
+        <c-vantage-types data={expRecordList} columns={fieldColumns} key-field="id" hide-checkbox-column="true"
+          onrowaction={handleRowAction} column-widths-mode="auto"
+          class="slds-table_header-fixed_container slds-scrollable_x slds-border_top">
+        </c-vantage-types>
+      </template>
+    </article>
+  </template>
