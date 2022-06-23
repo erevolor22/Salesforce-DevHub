@@ -1,0 +1,17 @@
+<template>
+    <div style="vertical-align:middle; margin: 8px; margin-bottom: 12px; height: auto">
+        <template if:false={typeAttributes.isCompleted}>
+            <strong>DUE: <lightning-relative-date-time value={typeAttributes.varDate}></lightning-relative-date-time></strong>
+        </template>
+
+        <lightning-icon icon-name={typeAttributes.completion} 
+                        alternative-text={typeAttributes.status} 
+                        class="slds-float_right"
+                        size="small">
+        </lightning-icon>
+
+        <template if:true={typeAttributes.isCompleted}>
+            <strong><p><lightning-formatted-text value='Completed'></lightning-formatted-text></p></strong>
+        </template>
+    </div>
+</template>
