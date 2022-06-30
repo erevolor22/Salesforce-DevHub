@@ -170,7 +170,7 @@ public without sharing class ExpectationProcessHelper {
         
         //upsert the expRecs
         Database.UpsertResult[] upsertResults = Database.upsert(expRecs, false);
-        /*ErrorLogger.logUpsertErrors(upsertResults, 'ExpectationProcessHelper');   */   
+        ErrorLogger.logUpsertErrors(upsertResults, 'ExpectationProcessHelper'); 
     }
 
     @TestVisible
